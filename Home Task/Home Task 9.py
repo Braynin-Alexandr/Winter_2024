@@ -16,31 +16,38 @@
 # print()
 
 #Задача 9-2.Частотный анализ текста
+#
+letters=("а", "у", "о", "ы", "и", "э", "я", "ю", "ё", "е")
 
-# letters=("а", "у", "о", "ы", "и", "э", "я", "ю", "ё", "е")
-#
-# n=int(input("Кол-во слов: "))
-# s1=input("Первое слово: ").lower()
-# s2=input(f"Введите остальные слова: ").lower().split()
-# dct1={}
-# dct2={}
-#
-#
-# for i, x in enumerate(s1): #создаём словарь для первого слова, где ключ - слово, значения - индексы гласных букв
-#     if x in letters:
-#         dct1.setdefault(s1, []).append(i)
-#
-# for x in s2:
-#     for i, y in enumerate(list(x)): #такой же цикл, но для списка слов
-#         if y in letters:
-#             dct2.setdefault(x, []).append(i)
-#
-# for word, values in dct2.items(): #передаём слова из 2-го словаря
-#     if values == dct1[s1]: #сравниваем значения двух словарей
-#         print(word, end=" ")
-#     else:continue
-# print()
+n=int(input("Кол-во слов: "))
+s1=input("Первое слово: ").lower()
 
+dct1={} #для первого слова
+for i, x in enumerate(s1): #создаём словарь для первого слова, где ключ - слово, значения - индексы гласных букв
+    if x in letters:
+        dct1.setdefault(s1, []).append(i)
+
+
+dct2={} #для остальных слов
+с=0 #счётчик кол-ва слов (n)
+
+for x in range(n):#через цикл добавляём слова в s2
+    a=input(f"Введите слово (остальась {n-с} шт.): ").lower()
+    for i, y in enumerate(list(a)):
+        if y in letters:
+            dct2.setdefault(a, []).append(i)
+    с+=1
+
+
+k=0
+for word, values in dct2.items():
+    if values == dct1[s1]: #сравниваем значения двух словарей
+        print(word, end=" ")
+        k+=1
+else:
+    if k==0:
+        print("Совпадений нет")
+print()
 
 #Задача 9-3.Частотный анализ текста
 # s=input("Ввод текста: ")
