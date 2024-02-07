@@ -21,7 +21,7 @@ with open("test1.txt", 'r') as f1:
             print(*finish_string, file=f2)
 
 
-#Задача 10-2
+# Задача 10-2
 import openpyxl
 wb=openpyxl.load_workbook("Лист Microsoft Excel.xlsx")
 ws=wb.active
