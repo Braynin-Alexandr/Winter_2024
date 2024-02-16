@@ -1,18 +1,20 @@
-# #Задача 14-1
+# -*- coding: utf-8 -*-
+
+# #Р—Р°РґР°С‡Р° 14-1
 def count_num(number, count=0):
     number = str(number)
     if len(number)>0:
         return count_num(number[1:], count+1)
     else:
-        return f'Количество цифр: {count}'
+        return f'РљРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ: {count}'
 
 
-number=int(input("Вычислим количество цифр введенного целого числа n (n>=0): "))
+number=int(input("Р’С‹С‡РёСЃР»РёРј РєРѕР»РёС‡РµСЃС‚РІРѕ С†РёС„СЂ РІРІРµРґРµРЅРЅРѕРіРѕ С†РµР»РѕРіРѕ С‡РёСЃР»Р° n (n>=0): "))
 print(count_num(number))
 print()
 
 
-# #Задача 14-2
+# #Р—Р°РґР°С‡Р° 14-2
 class NotNaturalNumberError(Exception):
     pass
 def check_natural_number(x):
@@ -24,7 +26,7 @@ def sum_nat_num(n):
         check_natural_number(n)
 
     except NotNaturalNumberError as e:
-        return f"Ошибка, {e} не является натуральным числом"
+        return f"РћС€РёР±РєР°, {e} РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅР°С‚СѓСЂР°Р»СЊРЅС‹Рј С‡РёСЃР»РѕРј"
 
     else:
         if n==1: return 1
@@ -32,13 +34,13 @@ def sum_nat_num(n):
             return n + sum_nat_num(n-1)
 
 
-number=int(input("Вычислим сумму цифр натурального числа: "))
+number=int(input("Р’С‹С‡РёСЃР»РёРј СЃСѓРјРјСѓ С†РёС„СЂ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРіРѕ С‡РёСЃР»Р°: "))
 print(sum_nat_num(number))
 print()
 
 
 
-# Задача 14-3
+# Р—Р°РґР°С‡Р° 14-3
 def tri_2(n):
     if n==1:
         print("*")
@@ -48,4 +50,4 @@ def tri_2(n):
         tri_2(n-1)
         print("*"* n)
 
-tri_2(int(input("Введите число, чтобы напечатать два треугольника: ")))
+tri_2(int(input("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ, С‡С‚РѕР±С‹ РЅР°РїРµС‡Р°С‚Р°С‚СЊ РґРІР° С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°: ")))
