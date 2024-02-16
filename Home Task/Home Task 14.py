@@ -12,6 +12,18 @@ number=int(input("Вычислим количество цифр введенн�
 print(count_num(number))
 print()
 
+#Альтернативное решение задача 14-1
+def count_num(n):
+    if n<10:
+        return 1
+    else:
+        return 1 + count_num(n//10)
+
+
+number=int(input("Вычислим количество цифр введенного целого числа n (n>=0): "))
+print(count_num(number))
+
+
 
 # #Задача 14-2
 class NotNaturalNumberError(Exception):
