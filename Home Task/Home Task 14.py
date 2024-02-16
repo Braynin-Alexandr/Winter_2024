@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # #Задача 14-1
 def count_num(number, count=0):
     number = str(number)
@@ -29,10 +28,9 @@ def sum_nat_num(n):
         return f"Ошибка, {e} не является натуральным числом"
 
     else:
-        if n==1: return 1
+        if n<10: return n
         else:
-            return n + sum_nat_num(n-1)
-
+            return n%10 + sum_nat_num(n//10)
 
 number=int(input("Вычислим сумму цифр натурального числа: "))
 print(sum_nat_num(number))
