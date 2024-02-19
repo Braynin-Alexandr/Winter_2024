@@ -19,12 +19,12 @@ print()
 # #Задача 15-2
 def car_numbers(x):
     import re
-    regex = r"\b[АВСЕНКМОРТХ]\d{3}[АВСЕНКМОРТХ]{2}[1]?78\b"
+    regex = r"\b[АВСЕНКМОРТХABCEHKMOPTX]\d{3}[АВСЕНКМОРТХABCEHKMOPTX]{2}[1]?78\b"
     res = re.findall(regex, x)
     return f'Номера машин: {", ".join(res)}' if len(res)!=0 else "Номера машин не найдены"
 
 # lst=input()
-lst="Номера автомашин Е333СА78, К787ТХ178, А123ВС47 и Х666ХХ147"
+lst="Номера автомашин A123BC78, А123ВС178, А123ВС47 и Х666ХХ147"
 print(car_numbers(lst))
 print()
 #
@@ -40,6 +40,3 @@ def phone_numbers(string):
 #s=input()
 s="Телефонные номера: №1 +7(812)987-6543, №2 +7(812)987-65-45,№3 +7(921)456-7890 и №4 +7(921)098-76-54"
 print(phone_numbers(s))
-
-
-
