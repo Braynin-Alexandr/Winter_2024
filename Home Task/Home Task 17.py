@@ -1,41 +1,41 @@
-# # #Задача 17-1
-#
-# def func(string):
-#     import re
-#     result = re.sub(r'\b(\w+)\b\s*[#№&+\-*.,:;"<>/!?]*\s*\b\1\b', r'\1',string, flags=re.I) # ищем два повторяющихся слова в паттерне \w+ и \1, но учитываем одно из них благодаря r'\1'
-#     return result
-#
-# text = 'Напишите напишите программу программу, которая устраняет повторение повторение слов, т.е. результат результат должен быть следующим'
-# # text=input("Введите предложение: ")
-# res = func(text)
-# print(res)
-# print()
-#
-#
+# #Задача 17-1
+
+def func(string):
+    import re
+    result = re.sub(r'\b(\w+)\b\s*[#№&+\-*.,:;"<>/!?]*\s*\b\1\b', r'\1',string, flags=re.I) # ищем два повторяющихся слова в паттерне \w+ и \1, но учитываем одно из них благодаря r'\1'
+    return result
+
+text = 'Напишите напишите программу программу, которая устраняет повторение повторение слов, т.е. результат результат должен быть следующим'
+# text=input("Введите предложение: ")
+res = func(text)
+print(res)
+print()
+
+
 # #Задача 17-2
-# def dec(func):
-#     def wrapper(*args, **kwargs):
-#         result_lst = []
-#         result_lst.extend([word.upper() for word in args if type(word)==str]) #args
-#         # for word in args:
-#         #     word_up=word.upper()
-#         #     result_lst.append(word_up)
-#
-#         result_lst.extend([value.upper() for value in kwargs.values() if type(value)==str]) #kwargs
-#         # for value in kwargs.values():
-#         #     value_up=value.upper()
-#         #     result_lst.append(value_up)
-#
-#         return result_lst
-#     return wrapper
-#
-# @dec
-# def some_func(*args, **kwargs):
-#     return
-#
-# result=some_func(1, "кошка", 2, 'собака', тип="домашние животные", уход='кормление', количество = 2)
-# print(result)
-# print()
+def dec(func):
+    def wrapper(*args, **kwargs):
+        result_lst = []
+        result_lst.extend([word.upper() for word in args if type(word)==str]) #args
+        # for word in args:
+        #     word_up=word.upper()
+        #     result_lst.append(word_up)
+
+        result_lst.extend([value.upper() for value in kwargs.values() if type(value)==str]) #kwargs
+        # for value in kwargs.values():
+        #     value_up=value.upper()
+        #     result_lst.append(value_up)
+
+        return result_lst
+    return wrapper
+
+@dec
+def some_func(*args, **kwargs):
+    return
+
+result=some_func(1, "кошка", 2, 'собака', тип="домашние животные", уход='кормление', количество = 2)
+print(result)
+print()
 
 
 #Задача 17-3
