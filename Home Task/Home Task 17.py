@@ -45,15 +45,19 @@ class Shape:
         self.square = square
 
     def set_colour(self, new_colour):
-        self.colour=new_colour
-        print(f'Новый цвет объекта: {self.colour}')
+        if type(new_colour) == str:
+            self.colour=new_colour
+            print(f'Новый цвет объекта: {self.colour}')
+        else: print(f'Ошибка, введено неверное значение: {new_colour} - {type(new_colour)}, должен быть <class \'str\'>')
 
     def show_colour(self):
         print(f'Цвет объекта: {self.colour}')
 
     def set_square(self,new_square):
-        self.square=new_square
-        print(f'Новая площадь объекта: {self.square}')
+        if type(new_square) == int:
+            self.square=new_square
+            print(f'Новая площадь объекта: {self.square}')
+        else: print(f'Ошибка, введено неверное значение: {new_square} - {type(new_square)}, должен быть <class \'int\'>')
 
     def show_square(self):
         print(f'Площадь объекта: {self.square}')
@@ -65,5 +69,5 @@ print(circle.__dict__)
 
 circle.set_colour('Синий') #установили новый цвет объекта
 circle.show_colour() #напечатали актуальный цвет объекта
-circle.set_square(10) #установили новую площадь объекта
+circle.set_square(5) #установили новую площадь объекта
 circle.show_square() #напечатали актуальную площадь объекта
