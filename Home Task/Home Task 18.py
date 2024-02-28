@@ -15,17 +15,15 @@ class Teacher:
             i.take(home_task)
         self.answers.extend(home_task) #отправляём исхоную задачу в атрибут answers
 
-    def receive_task(self, pupil_name, home_task):
-        for pupil in Pupil.group:  # перебираем всех учеников
-            if pupil.name == pupil:  # находим ученика по имени
-                for pupil_answers in home_task:
-                    for task_name, task_answer in pupil_answers.items():
-                        for teacher_answer in self.answers:
-                            if task_name in teacher_answer:
-                                if task_answer >= teacher_answer[task_name]:
-                                    pupil.set_tasks_mark(task_name, True)
-                                else:
-                                    pupil.set_tasks_mark(task_name, False)
+    def receive_task(self, pupil, home_task):
+        for pupil_answers in home_task:
+            for task_name, task_answer in pupil_answers.items():
+                for teacher_answer in self.answers:  # достаём из атрибута self.answers изначальные значения задач
+                    if task_name in teacher_answer:
+                        if task_answer >= teacher_answer[task_name]:
+                            pupil.set_task_mark(task_name, True)
+                        else:
+                            pupil.set_task_mark(task_name, False)
 
 class Pupil:
     group = []  #список всех учеников
@@ -52,29 +50,33 @@ class Pupil:
                 self.tasks_done.append(result) #добавляём в атрибут ученика tasks_done задачу (ключ) и условное умение ученика решить задачу (значение)
 
     def send_tasks_to_teacher(self, teacher):
-        teacher.receive_task(self.name, self.tasks_done)
+        teacher.receive_task(self, self.tasks_done)
 
-    def set_tasks_mark(self, task_name, mark):
+    def set_task_mark(self, task_name, mark):
         for task in self.tasks_done:
-            print(task)
             if task.get(task_name):
                 task[task_name] = mark
 
 
-home_task_18 = Tasks([{'ООП': 5},{'RE':3},{'Рекурсия':4}]) #создаём задачи, где значения - уровени сложности
+home_task_18 = Tasks([{'ООП': 5}, {'RE': 3}, {'Рекурсия': 4}])  # создаём задачи, где значения - уровени сложности
 
-teacher = Teacher('Мастер') #создаём учителя
+teacher = Teacher('Мастер')  # создаём учителя
 
-pupil_1 = Pupil('Люк Скайукоер', 2, 2, 0) #создаём учеников
+pupil_1 = Pupil('Люк Скайукоер', 2, 2, 0)  # создаём учеников
 pupil_2 = Pupil('Оби Ван', 3, 0, 2)
 pupil_3 = Pupil('R2D2', 2, 0, 1)
 
-teacher.send_home_task(home_task_18.spisok) #отправляем задачи ученикам
+teacher.send_home_task(home_task_18.spisok)  # отправляем задачи ученикам
 
-pupil_1.do_home_task() #ученики решают задачи
+pupil_1.do_home_task()  # ученики решают задачи
 pupil_2.do_home_task()
 pupil_3.do_home_task()
 
-pupil_1.send_tasks_to_teacher(teacher) #ученики отправляют свои рещения учителю
+pupil_1.send_tasks_to_teacher(teacher)  # ученики отправляют свои решения учителю
 pupil_2.send_tasks_to_teacher(teacher)
 pupil_3.send_tasks_to_teacher(teacher)
+
+
+print(pupil_1.name,pupil_1.tasks_done) #учитель ставит оценки, проверяет
+print(pupil_2.name,pupil_2.tasks_done)
+print(pupil_3.name,pupil_3.tasks_done)
