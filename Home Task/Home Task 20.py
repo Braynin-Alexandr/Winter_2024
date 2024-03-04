@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import itertools
-
 # Задача 20-1
 class Cafe:
     def __init__(self, name, menu):
