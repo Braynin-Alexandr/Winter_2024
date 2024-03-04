@@ -15,7 +15,7 @@ class Cafe:
             if product in self.menu:
                 price = self.menu[product]
                 if consumer.money>= price:
-                    print(f"Продукт '{product}' куплен за {price} руб.")
+                    print(f"Продукт '{product}' куплен в \'{self.name}\' за {price} руб.")
                     self.income+=price
                     consumer.money -= price
                     consumer.expenses += price
@@ -25,7 +25,7 @@ class Cafe:
                 print(f"'{product}' не найден в меню")
 
     def get_income(self):
-        print(f'\'{self.name}\' заработала: {self.income} руб.')
+        print(f'Заведение \'{self.name}\' заработало: {self.income} руб.')
 
 class Consumer:
     def __init__(self, name, money_card, money_cash):
@@ -42,7 +42,7 @@ class Consumer:
         print(f'{self.name} потратил(а): {self.expenses} руб.')
 
 
-cafe1=Cafe('Кофейня', {'Американо':100, 'Капучино': 200, 'Пирожок':70})
+cafe1=Cafe('Кофешоп', {'Американо':100, 'Капучино': 200, 'Пирожок':70})
 man1=Consumer('Алексей',500, 100)
 
 man1.get_cofe_food(cafe1,'Американо', 'Пирожок')
@@ -73,11 +73,11 @@ print()
 
 # Задача 20-3
 class GenLetterNumbers:
-    import itertools
     def __init__(self):
         self.lst=[1, 'A', 2, 'B', 3, 'C', 4, 'D', 5, 'E', 6, 'F', 7, 'G', 8, 'H', 9, 'I', 10,
         'J', 11, 'K', 12, 'L', 13, 'M', 14, 'N', 15, 'O', 16, 'P', 17, 'Q', 18, 'R', 19, 'S', 20,
         'T', 21, 'U', 22, 'V', 23, 'W', 24, 'X', 25, 'Y', 26, 'Z']
+        import itertools
         self.generator = itertools.cycle(self.lst)
     def __iter__(self):
         return self
@@ -87,5 +87,5 @@ class GenLetterNumbers:
 
 Gen = GenLetterNumbers()
 
-for x in range(100):
+for x in range(80):
     print(next(Gen), end=", ")
