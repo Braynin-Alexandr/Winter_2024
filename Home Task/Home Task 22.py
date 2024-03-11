@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#Задача 22.2
+#Задача 22-2
 def rec_function(lst, res=None):
 
     if res is None:
@@ -21,7 +21,7 @@ lst=[(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (6, 7), (7, 8)]
 print(rec_function(lst))
 print()
 
-#Задача 22.3
+#Задача 22-3
 def check_kw_in_string(string):
     import re, keyword
 
