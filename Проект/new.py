@@ -11,18 +11,29 @@ def get_test_mark(pupil_answers):
         if sum(pupil_answers)<=test_point: return mark
     else: return 5
 
+
 def count_marks(marks):
     test_marks=Counter([mark[0] for mark in marks.values()])
     quarter_3_marks=Counter([mark[1] for mark in marks.values()])
     return test_marks, quarter_3_marks
 
-def count_good_bad_marks(marks):
-    good_marks, bad_marks = (marks[4]+marks[5]), (marks[2]+marks[3])
-    return good_marks, bad_marks
 
 def get_quality(marks):
-    pass
+    good_marks, bad_marks = (marks[4] + marks[5]), (marks[2] + marks[3])
+    return round((good_marks / (good_marks+bad_marks))* 100)
 
+
+def get_school_performance(count_marks):
+    performance_marks = 0
+    for mark in range(3, 6): performance_marks+=count_marks.get(mark, 0)
+    count_all_marks=sum(count_marks.values())
+    return round((performance_marks / count_all_marks)* 100)
+
+
+def get_avarage_mark(count_marks):
+    sum_marks=sum([mark*count for mark, count in count_marks.items()])
+    all_marks=sum(count_marks.values())
+    return round(sum_marks/all_marks)
 
 pupils_all_info = {}
 pupils_test_answers=[]
@@ -49,9 +60,9 @@ for row in range(2, ws.max_row+1):
 wb.save('Форма.xlsx')
 
 count_test_marks, count_quarter_3_marks = count_marks(pupils_all_info)
-
-test_good_marks, test_bad_marks = count_good_bad_marks(count_test_marks)
-
-quarter_3_good_marks, quarter_3_bad_marks = count_good_bad_marks(count_quarter_3_marks)
-
-print(quarter_3_good_marks)
+test_quality = get_quality(count_test_marks)
+quarter_3_quality = get_quality(count_quarter_3_marks)
+test_performance = get_school_performance(count_test_marks)
+quarter_3_performance = get_school_performance(count_quarter_3_marks)
+test_avarage_mark=get_avarage_mark(count_test_marks)
+quarter_3_avarage_mark=get_avarage_mark(count_quarter_3_marks)
